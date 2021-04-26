@@ -2,61 +2,68 @@
 
 // Suspects Collection
 const suspectsArray = [
-	{ mrGreen: {
-  firstName: 'Jacob',
-  lastName: 'Green',
-  occupation: 'Entrepreneur',
-  age: 45,
-  description: 'He has a lot of connections',
-  image: '',
-  color: 'green'} },
-  
-    { drOrchid: {
-  firstName: 'Doctor',
-  lastName: 'Orchid',
-  occupation: 'Scientist',
-  age: 26,
-  description: ' PhD in plant toxicology. Adopted daughter or Mr. Boddy',
-  image: '',
-  color: 'white'} },
-  
-    { profPlum: {
-  firstName: 'Victor',
-  lastName: 'Plum',
-  occupation: 'Designer',
-  age: 22,
-  description: 'Billionaire videogame designer',
-  image: '',
-  color: 'purple' } },
-  
-    { missScarlet: {
-  firstName: 'Kasandra',
-  lastName: 'Scarlet',
-  occupation: 'Actor',
-  age: 31,
-  description: 'She is an A-list movie star with a dark past',
-  image: '',
-  color: 'red'} },
-  
-    { mrsPeacock: {
-  firstName: 'Eleanor',
-  lastName: 'Peacock',
-  occupation: 'Socialité',
-  age: 36,
-  description: 'She is from a wealthy family and uses her status and money to earn popularity',
-  image: '',
-  color: 'blue'} },
-  
-    { mrMustard: {
-  firstName: 'Jack',
-  lastName: 'Msutard',
-  occupation: 'Retired Football player',
-  age: 62,
-  description: 'He is a former football player who tries to get by on his former glory',
-  image: '',
-  color: 'yellow'
-  } },
-];
+    { 
+    mrGreen: {
+    firstName: 'Jacob',
+    lastName: 'Green',
+    occupation: 'Entrepreneur',
+    age: 45,
+    description: 'He has a lot of connections',
+    image: 'https://pbs.twimg.com/profile_images/506787499331428352/65jTv2uC.jpeg',
+    color: 'green'}
+    },
+    
+      { 
+    drOrchid: {
+    firstName: 'Doctor',
+    lastName: 'Orchid',
+    occupation: 'Scientist',
+    age: 26,
+    description: ' PhD in plant toxicology. Adopted daughter or Mr. Boddy',
+    image: 'http://www.radiotimes.com/uploads/images/Original/111967.jpg',
+    color: 'white'} },
+    
+      { 
+    profPlum: {
+    firstName: 'Victor',
+    lastName: 'Plum',
+    occupation: 'Designer',
+    age: 22,
+    description: 'Billionaire videogame designer',
+    image: 'https://66.media.tumblr.com/ee7155882178f73b3781603f0908617c/tumblr_phhxc7EhPJ1w5fh03_540.jpg',
+    color: 'purple' } },
+    
+      { 
+    missScarlet: {
+    firstName: 'Kasandra',
+    lastName: 'Scarlet',
+    occupation: 'Actor',
+    age: 31,
+    description: 'She is an A-list movie star with a dark past',
+    image: 'https://www.radiotimes.com/uploads/images/Original/111967.jpg',
+    color: 'red'} },
+    
+      { 
+    mrsPeacock: {
+    firstName: 'Eleanor',
+    lastName: 'Peacock',
+    occupation: 'Socialité',
+    age: 36,
+    description: 'She is from a wealthy family and uses her status and money to earn popularity',
+    image: 'https://metrouk2.files.wordpress.com/2016/07/mrs-peacock.jpg',
+    color: 'blue'} },
+    
+      { 
+    mrMustard: {
+    firstName: 'Jack',
+    lastName: 'Msutard',
+    occupation: 'Retired Football player',
+    age: 62,
+    description: 'He is a former football player who tries to get by on his former glory',
+    image: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/07/04/08/unspecified-3.jpg',
+    color: 'yellow'
+    } },
+  ];
 
 
 // Weapons Collection
@@ -97,24 +104,47 @@ const roomsArray = [
 
 // ITERATION 2
 
-  function selectRandom(suspectsArray) {
 
-    let randomSuspect = suspectsArray[Math.floor(Math.random() * suspectsArray.length)];
-  
-    if (suspectsArray.length == 0) {
-  
-      return undefined;
-    } else {
-  
-      return randomSuspect;
-    }
+function selectRandom(cards) {
+
+  let randomCard = cards[Math.floor(Math.random() * cards.length)];
+
+  if (cards.length == 0) {
+
+    return undefined;
+  } else {
+
+    return randomCard;
   }
-  
-selectRandom(suspectsArray);
+}
 
 
+function pickMystery() {
 
-// function pickMystery()
+let mistery = {};
+
+mistery.weapon = selectRandom(weaponsArray);
+mistery.room = selectRandom(roomsArray);
+mistery.suspect = selectRandom(suspectsArray);
+
+return mistery;
+}
 
 
 // ITERATION 3
+
+function revealMystery(envelope) {
+
+// let mistery = pickMystery();
+
+// var suspectKey = Object.keys(envelope.suspect)[0];
+
+let firstName = envelope.suspect.firstName;
+let lastName = envelope.suspect.lastName;
+
+let weapon = envelope.weapon.name;
+let room =  envelope.room.name;
+
+return firstName+' '+lastName+' killed Mr. Boddy using the '+weapon+' in the '+room+'!';
+
+}
